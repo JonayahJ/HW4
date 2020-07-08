@@ -2,12 +2,6 @@
     box-sizing: border-box;
   }
 
-  .wrapper {
-    width: 800px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  
   h1 {
     font-size: 30px;
     font-family: 'Creepster', cursive;
@@ -20,4 +14,21 @@
 
   p {
     font-family: 'Source Sans Pro', sans-serif;
+  }
+
+  .wrapper {
+    width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  #question {
+    font-size: 20px;
+    font-family: 'Creepster', cursive;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  #nextBtn {
+    margin-top: 30px;
   }

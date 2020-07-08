@@ -13,21 +13,25 @@
 </head>
 
 <body>
-    <div class="wrapper">
+    <!-- Title and Introduction -->
+    <div class="wrapper" style="margin-top: 50px;">
         <h1>Horror Movie Trivia</h1>
         <h2>Test your skills!</h2>
-        <p>
-            Hello ghouls and gals!  Do you have what it takes to be the reigning Horror Movie Trivia champ?  If so, test your skills today.
-        </p>
-        <p>
-            You will have 3 minutes to answer all 13 questions.  For each correct answer, you will gain a point.  For each incorrect answer, you will lose 10 seconds off of your timer.  Try to get the highest score and become the reigning champ if you dare. Press the start button to begin!
-        </p>
-        <!--  start button - does not show up!!! -->
-        <button type="button" class="btn btn-warning" id="startBtn">Start</button>
+        <span id="intro">
+            <p>
+                Hello ghouls and gals!  Do you have what it takes to be the reigning Horror Movie Trivia champ?  If so, test your skills today.
+            </p>
+            <p>
+                You will have 3 minutes to answer all 13 questions.  For each correct answer, you will gain a point.  For each incorrect answer, you will lose 10 seconds off of your timer.  Try to get the highest score and become the reigning champ if you dare. Press the start button to begin!
+            </p>
+        </span>
+        <!--  start button -->
+        <button type="button" class="btn btn-danger" id="startBtn">Start</button>
 
 
         <!-- Quiz -->
-        <div class="container" id="trivia">
+        <div id="container" class="trivia">
+            
             <!-- Timer/Score area -->
             <div class="row">
                 <div class="col-6">
@@ -37,6 +41,11 @@
                     <h3>Score:<span id="score"> </span></h3>
                 </div>
             </div>
+            
+            <!-- Question area -->
+            <div id="question" class="hide">Question</div>
+            
+            <!-- Choices area -->
             <div class="buttons">
                 <!-- Choices 0 button -->
                 <button type="button" class="btn btn-dark btn-lg btn-block" id="choices-0">Choice 0</button>
@@ -46,14 +55,18 @@
                 
                 <!-- Choices 2 button -->
                 <button type="button" class="btn btn-dark btn-lg btn-block" id="choices-2">Choice 2</button>
+
+                <!-- Next button -->
+                <button type="button" class="btn btn-danger" id="nextBtn">Next</button>
+
             </div>
         </div>
     </div>
 
     <!-- JS+ -->
-    <script src="movietrivia.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="movietrivia.js"></script>
 </body>
 </html>

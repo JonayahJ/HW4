@@ -1,11 +1,13 @@
+$(document).ready(function(){
 
 
 // predetermined data to include
     // DOM elements
     const startEl = document.getElementById("startBtn");
-    const triviaEl = document.getElementById("trivia")
+    const nextButton = document.getElementById('nextBtn');
+    const triviaEl = document.getElementById("trivia");
     
-    const questionEl = document.getElementById("question")
+    const questionEl = document.getElementById("question");
     const choices0 = document.querySelector("#choices-0");
     const choices1 = document.querySelector("#choices-1");
     const choices2 = document.querySelector("#choices-2");
@@ -13,7 +15,7 @@
     const timerEl = document.getElementById("timer");
     const scoreEl = document.getElementById("score");    
 
-    
+
     // variables
     var score = 0;
     var secondsLeft = 180;
@@ -104,32 +106,82 @@
 
 // FUNCTIONS =========================================================================
 
-// click start button
+// click start button to start game
+startEl.addEventListener("click", startGame)
+
+function startGame() {
+    // console.log("started");
+    startEl.classList.add("hide");
+    triviaEl.classList.remove('hide');
+}
 
 // countdown timer
+// startEl.addEventListener("click", function() {
+//     startEl.style.display = "none";
+//     var myInterval = setInterval(function () {
+//         timerEl.textContent = secondsLeft;
+//         secondsLeft--;
+//         if (secondsLeft === -1) {
+//             clearInterval(myInterval);
+//         }
+//     }, 1000);
+// }
 
 // running questions
 const lastQuestion = questions.length - 1;
-let runningQuestion = 0
+let runningQuestion = 0;
 
-function showQuestion() {
-    let q = questions[runningQuestion];
+// function showQuestion() {
+//     console.log(questions[runningQuestion].question)
     
-    // setting up the questions and responses to display
-    questionEl.innerHTML = `<p> ${q.questionEl} </p>`;
-    choices0.innerHTML = q.choices[0];
-    choices1.innerHTML = q.choices[1];
-    choices2.innerHTML = q.choices[2];
+//     //empty out the question div and choices div
     
-    //how do I show the correct answer?
-};
+//     //1. create var
+//     var q = $("<p>");
+//     //<p></p>
+    
+//     //2. style it
+//     q.attr("id", "question");
+//      //<p id="question"></p>
+    
+//      q.text(questions[runningQuestion].question);
+//     //<p id="question">Question one Lives here</p>
+    
+//     //3. stick to page
+//     $("#trivia").append(q);
+    
+//     for(var i = 0;i < questions[runningQuestion].choices.length; i++){
+//         var btn = $("<button>");
+//         btn.attr("type","button");
+//         btn.attr("class","option btn btn-dark btn-lg btn-block")
+//         btn.attr("data-value", questions[runningQuestion].choices[i]);
+//         btn.text(questions[runningQuestion].choices[i]);
+//         $(".buttons").append(btn);
+//     }
+//     // onclick button
+//     $(".options").onclick= function(){
+//         //1.make sure btn triggers
+//         // alert("works");
+//         //2. grab the current value
+//         console.log($(this).text())
+//         //3. evaluate the currentvalue to the correct ans
+//     }
+// };
 
-startEl.style.display = "none";
-showQuestion();
-triviaEl.style.display = "block"; // why block and not show?
+// //startEl.style.display = "none";
+// showQuestion();
+// //triviaEl.style.display = "block"; // why block and not show?
 
-console.log(showQuestion);
-
+// $(".options").onclick= function(){
+   
+//     //1.make sure btn triggers
+//     // alert("works");
+//     //2. grab the current value
+//     console.log($(this).text())
+//     //3. evaluate the currentvalue to the correct ans
+   
+// }
+//console.log(showQuestion);
 
 // user input ===========================================================================
 
@@ -164,4 +216,4 @@ console.log(showQuestion);
 
     // Play again? button
         // return to top of quiz
-
+});

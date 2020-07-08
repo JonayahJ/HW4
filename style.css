@@ -1,3 +1,23 @@
-/* .container {
-    /* img https://us.123rf.com/450wm/annaleni/annaleni1509/annaleni150900056/45078310-thin-holiday-line-halloween-purple-seamless-pattern-vector-scary-party-design-and-seamless-backgroun.jpg?ver=6 */
-/* }; 
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  .wrapper {
+    width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 30px;
+    font-family: 'Creepster', cursive;
+    color: red;
+  }
+
+  h2, h3 {
+    font-family: 'Abril Fatface', cursive;
+  }
+
+  p {
+    font-family: 'Source Sans Pro', sans-serif;
+  }

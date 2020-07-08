@@ -2,30 +2,25 @@
 
 // predetermined data to include
     // DOM elements
-    var choicesA = document.querySelector("#choices-a");
-    var choicesB = document.querySelector("#choices-b");
-    var choicesC = document.querySelector("#choices-c");
+    const startEl = document.getElementById("startBtn");
+    const triviaEl = document.getElementById("trivia")
     
-    var timerEl = document.getElementById("timer"); // how is this different from a querySelector?
-    var startEl = document.getElementById("startBtn");
-    var scoreEl = document.getElementById("score");
-
-    // var question = document.querySelector("#question")
+    const questionEl = document.getElementById("question")
+    const choices0 = document.querySelector("#choices-0");
+    const choices1 = document.querySelector("#choices-1");
+    const choices2 = document.querySelector("#choices-2");
     
+    const timerEl = document.getElementById("timer");
+    const scoreEl = document.getElementById("score");    
 
-    // arrays
-    var choices = [choicesA, choicesB, choicesC]
-
+    
     // variables
     var score = 0;
     var secondsLeft = 180;
 
- 
-    
 
     // Question bank
-
-    var movieTrivia = [
+    let questions = [
         {  //1
             question: "Who was the murderer in \"Friday the 13th\"?", 
             choices: ["Pamela Vorhees", "Jason Vorhees", "Jeffrey Vorhees"],
@@ -105,41 +100,35 @@
         },
     ]
 
-    // console.log(movieTrivia)
+    console.log(questions)
 
 // FUNCTIONS =========================================================================
 
 // click start button
-    // startEl.addEventListener("click", function() {
-    //     startEl.style.display = "none"; // what does this do?
-    //         var timerInterval = setInterval(function() {
-    //           secondsLeft--; 
-    //           timerEl.textContent = secondsLeft + " seconds to go.";
-        
-    //           if(secondsLeft === 0) {
-    //             clearInterval(timerInterval); // making the function stop
-    //             // sendMessage();
-    //           }
-        
-    //         }, 1000); // equals 1 second because these are miliseconds
-    //       }
-    // });
 
 // countdown timer
-function startGame() {
-    var timer = setInterval(secondsLeft, 1000)
-    // clear score
 
-    //display first question
-}
+// running questions
+const lastQuestion = questions.length - 1;
+let runningQuestion = 0
 
-function countdown() {
-    secondsLeft--;
-    timerEl.textContent = secondsLeft
-}
+function showQuestion() {
+    let q = questions[runningQuestion];
+    
+    // setting up the questions and responses to display
+    questionEl.innerHTML = `<p> ${q.questionEl} </p>`;
+    choices0.innerHTML = q.choices[0];
+    choices1.innerHTML = q.choices[1];
+    choices2.innerHTML = q.choices[2];
+    
+    //how do I show the correct answer?
+};
 
-startEl.onclick = startGame
-// first question pops up
+startEl.style.display = "none";
+showQuestion();
+triviaEl.style.display = "block"; // why block and not show?
+
+console.log(showQuestion);
 
 
 // user input ===========================================================================

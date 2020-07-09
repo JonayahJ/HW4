@@ -7,15 +7,9 @@ $(document).ready(function(){
     const introEl = document.getElementById("intro");
     const nextEl = document.getElementById("nextBtn");
     const questionContainer = document.getElementById("questionContainer");
-    // const triviaEl = document.getElementById("trivia");
-
     
     const questionEl = document.getElementById("question");
-    // const correctEl = document.getElementById("correct");
     const answerButtons = document.getElementById("answerButtons");
-    const choices0 = document.querySelector("#choices-0");
-    const choices1 = document.querySelector("#choices-1");
-    const choices2 = document.querySelector("#choices-2");
     
     const timerEl = document.getElementById("timer");
     const scoreEl = document.getElementById("score");    
@@ -23,7 +17,9 @@ $(document).ready(function(){
 
     // variables
     var score = 0;
-    var secondsLeft = 180;
+
+    const startingMinutes = 3;
+    let secondsLeft = startingMinutes * 60;
 
 
     // Question bank
@@ -146,9 +142,23 @@ $(document).ready(function(){
         },
     ]
 
+    // running questions
+    let shuffledQuestions, currentQuestionIndex
+
     // console.log(questions)
 
 // FUNCTIONS =========================================================================
+
+// countdown timer
+setInterval(updateTimer, 1000)
+
+function updateTimer() {
+    // let seconds = secondsLeft % 60;
+
+    timerEl.innerHTML = secondsLeft;
+    secondsLeft--;
+}
+
 
 // click start button to start game
 startEl.addEventListener("click", startGame)
@@ -181,15 +191,16 @@ function startGame() {
     questionContainer.style.display = "block"
    }
    
-   // ask them questions
+   
+};
+// ask them questions
    shuffledQuestions = questions.sort(() => Math.random() - .5);
    currentQuestionIndex = 0
-
    setNextQuestion ();
-};
 
 // shuffle questions
 function setNextQuestion (){
+    resetState()
     showQuestion(shuffledQuestions[currentQuestionIndex])
 };
 
@@ -208,18 +219,25 @@ function showQuestion(question) {
     });
 }
 
+// removing the old questions
+function resetState() {
+    while (answerButtons.firstChild) {
+      answerButtons.removeChild(answerButtons.firstChild)
+    }
+  }
+
 // getting the right answers
 function selectAnswer(e) {
     const selectButton = e.target
     const correct = selectButton.dataset.correct
     setStatusClass(document.body, correct)
-    Array.from(answerButtons.children).forEach(button => {
+    Array.from(answerButtons.children).forEach(button => { // need to go over w tutor
         setStatusClass(button, button.dataset.correct)
     })
 };
 
 
-// check if it is correct?
+// check if it is correct --> changing between the colors (red/green)
 function setStatusClass(element, correct) {
     clearStatusClass(element)
     if (correct) {
@@ -229,44 +247,14 @@ function setStatusClass(element, correct) {
     }
 }
 
+// removing the status of answers
 function clearStatusClass(element) {
     element.classList.remove("correct")
     element.classList.remove("incorrect")
 }
 
-// countdown timer
-// startEl.addEventListener("click", function() {
-//     startEl.style.display = "none";
-//     var myInterval = setInterval(function () {
-//         timerEl.textContent = secondsLeft;
-//         secondsLeft--;
-//         if (secondsLeft === -1) {
-//             clearInterval(myInterval);
-//         }
-//     }, 1000);
-// }
-
-// running questions
-let shuffledQuestions, currentQuestionIndex
 
 
-
-// user input ===========================================================================
-
-
-// if else statement
-    // if correct,
-    // alert right answer
-    // display right answer at bottom
-    // add +1 to score
-    // then move on to next question
-        // clear screen
-    
-    // else if wrong
-    // alert wrong answer
-    // remove 10 seconds from timer 
-    // then move on to next question
-        // clear screen
 
 
 // when the timer reaches 0, then...

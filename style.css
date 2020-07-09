@@ -42,7 +42,6 @@
   }
 
   .btn {
-    background: #202020;
     width: 200px;
     height: 60px;
     padding: 5px 10px;
@@ -52,7 +51,7 @@
   }
   
   .btn:hover {
-    background: #080808;
+    background: red;
     color: white;
   }
   
@@ -63,5 +62,10 @@
   
   .btn.incorrect {
     background: red;
+    color: white;
+  }
+
+  button.btn {
+    background: #202020;
     color: white;
   }

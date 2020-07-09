@@ -18,11 +18,18 @@
 
     * Start button event
     * Start game (with many if else statements to hide elements on the page)
-    * Setting and showing questions
+    * Setting and showing questions (broken)
     * Getting the right answers and checking if they were correct
     * Next button event
     * Clearing old answers
     * Countdown timer
-    * Scoreboard
+    * Scoreboard (incomplete)
 
 
+## Problems that I had
+
+The main problems that I had were the score counter (which meant I was never able to get to the scoreboard) and the questions appearing.
+
+When I first started, I was able to get the questions to appear by random and in the div that I designated (see image).  But as soon as I tried to validate the answers and get the next button to work, the questions went away and I'm not sure how to undo what I did without the whole thing unraveling.
+
+No matter what I tried for the score, it wouldn't work.

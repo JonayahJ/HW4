@@ -153,12 +153,9 @@ $(document).ready(function(){
 setInterval(updateTimer, 1000)
 
 function updateTimer() {
-    // let seconds = secondsLeft % 60;
-
     timerEl.innerHTML = secondsLeft;
     secondsLeft--;
 }
-
 
 // click start button to start game
 startEl.addEventListener("click", startGame)
@@ -190,8 +187,6 @@ function startGame() {
    } else {
     questionContainer.style.display = "block"
    }
-   
-   
 };
 // ask them questions
    shuffledQuestions = questions.sort(() => Math.random() - .5);
@@ -206,21 +201,32 @@ function setNextQuestion (){
 
 // show questions
 function showQuestion(question) {
+    // adding the question to the question id
     questionEl.innerText = question.question
+    // for each question, do this
     question.answers.forEach(answer => {
-        const button = document.createElement("button")
-        button.innerText = answer.text
-        button.classList.add("btn")
-        if (answer.correct) {
-            button.dataset.correct = answer.correct
-        }
-        button.addEventListener("click", selectAnswer)
-        answerButtons.appendChild(button)
-    });
-}
+      // create a button
+      const button = document.createElement("button")
+      // add the possible answers to the inside of the button
+      button.innerText = answer.text
+      // add the class "btn" to the button for styling
+      button.classList.add("btn")
+      // if user choise of button is correct, 
+      if (answer.correct) {
+        // display the red/green styling
+        button.dataset.correct = answer.correct
+      }
+      // listen for the click and add button when pressed
+      button.addEventListener('click', selectAnswer)
+      answerButtons.appendChild(button)
+    })
+  }
+
+  console.log(showQuestion)
 
 // removing the old questions
 function resetState() {
+    // if no reset, the answers will pile up and not clear
     while (answerButtons.firstChild) {
       answerButtons.removeChild(answerButtons.firstChild)
     }
@@ -237,15 +243,18 @@ function selectAnswer(e) {
 };
 
 
+
 // check if it is correct --> changing between the colors (red/green)
 function setStatusClass(element, correct) {
     clearStatusClass(element)
     if (correct) {
         element.classList.add("correct")
+
     } else {
         element.classList.add("incorrect")
     }
 }
+
 
 // removing the status of answers
 function clearStatusClass(element) {
@@ -254,12 +263,8 @@ function clearStatusClass(element) {
 }
 
 
-
-
-
 // when the timer reaches 0, then...
     // timer is done
-    // all questions are asked
     // clear screen
 
 

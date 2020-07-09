@@ -23,7 +23,7 @@
   }
 
   #question {
-    font-size: 20px;
+    font-size: 0px;
     font-family: 'Creepster', cursive;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -35,4 +35,33 @@
 
   #questionContainer {
     display: none;
+  }
+
+  #intro {
+    display: block;
+  }
+
+  .btn {
+    background: #202020;
+    width: 200px;
+    height: 60px;
+    padding: 5px 10px;
+    margin-top: 20px;
+    margin-right: 20px;
+    color: white;
+  }
+  
+  .btn:hover {
+    background: #080808;
+    color: white;
+  }
+  
+  .btn.correct {
+    background: green;
+    color: white;
+  }
+  
+  .btn.incorrect {
+    background: red;
+    color: white;
   }

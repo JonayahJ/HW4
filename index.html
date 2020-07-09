@@ -33,12 +33,12 @@
         <div id="questionContainer">
             
             <!-- Timer/Score area -->
-            <div class="row">
+            <div class="row" style="margin-top: 20px;">
                 <div class="col-6">
-                    <h3>Time Remaining:<span id="timer"> </span></h3>
+                    <p style="font-family: 'Abril Fatface', cursive;">Time Remaining:<span id="timer"> </span></p>
                 </div>
                 <div class="col-6">
-                    <h3>Score:<span id="score"> </span></h3>
+                    <p style="font-family: 'Abril Fatface', cursive;">Score:<span id="score"> </span></p>
                 </div>
             </div>
             
@@ -46,19 +46,15 @@
             <div id="question">Question</div>
             
             <!-- Choices area -->
-            <div class="buttons">
-                <!-- Choices 0 button -->
-                <button type="button" class="btn btn-dark btn-lg btn-block" id="choices-0">Choice 0</button>
-                
-                <!-- Choices 1 button -->
-                <button type="button" class="btn btn-dark btn-lg btn-block" id="choices-1">Choice 1</button>
-                
-                <!-- Choices 2 button -->
-                <button type="button" class="btn btn-dark btn-lg btn-block" id="choices-2">Choice 2</button>
-
-                <!-- Next button -->
-                <button type="button" class="btn btn-danger" id="nextBtn">Next</button>
-
+            <div id="answerButtons"></div>
+            
+            <!-- Next button -->
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <button type="button" class="btn btn-dark" id="nextBtn">Next</button>
+                </div>
+                <div class="col-4"></div>
             </div>
         </div>
     </div>

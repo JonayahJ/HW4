@@ -5,7 +5,9 @@ $(document).ready(function(){
     // DOM elements
     const startEl = document.getElementById("startBtn");
     const nextButton = document.getElementById('nextBtn');
-    const triviaEl = document.getElementById("trivia");
+    const questionContainer = document.getElementById("questionContainer");
+    // const triviaEl = document.getElementById("trivia");
+
     
     const questionEl = document.getElementById("question");
     const choices0 = document.querySelector("#choices-0");
@@ -111,8 +113,21 @@ startEl.addEventListener("click", startGame)
 
 function startGame() {
     // console.log("started");
-    startEl.classList.add("hide");
-    triviaEl.classList.remove('hide');
+  
+    //hide start button on press
+    if (startEl.style.display === "none") {
+       startEl.style.display = "block";
+   } else {
+       startEl.style.display = "none"
+   }
+
+   //show questionContainer on press
+   if (questionContainer.style.display === "block") {
+    questionContainer.style.display = "none";
+   } else {
+    questionContainer.style.display = "block"
+   }
+    
 }
 
 // countdown timer

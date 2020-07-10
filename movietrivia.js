@@ -271,6 +271,10 @@ var stopwatch =
 //         // endGame()
 //       }
 // }
+// ask them questions
+shuffledQuestions = questions.sort(() => Math.random() - .5);
+currentQuestionIndex = 0
+
 
 // click start button to start game
 startEl.addEventListener("click", startGame)
@@ -282,6 +286,9 @@ nextEl.addEventListener("click", () => {
 function startGame() {
     // console.log("started");
   
+    stopwatch.start();
+  
+    setNextQuestion ();
     //hide start button on press
     if (startEl.style.display === "none") {
        startEl.style.display = "block";
@@ -303,10 +310,7 @@ function startGame() {
     questionContainer.style.display = "block"
    }
 };
-// ask them questions
-   shuffledQuestions = questions.sort(() => Math.random() - .5);
-   currentQuestionIndex = 0
-   setNextQuestion ();
+
 
 // shuffle questions
 function setNextQuestion (){
@@ -316,6 +320,9 @@ function setNextQuestion (){
 
 // show questions
 function showQuestion(question) {
+    if(currentQuestionIndex<4){
+
+  
     questionEl.innerText ="";
     // adding the question to the question id
     questionEl.innerText = question.question;
@@ -337,6 +344,9 @@ function showQuestion(question) {
       button.addEventListener('click', selectAnswer)
       answerButtons.appendChild(button)
     })
+}else{
+    alert("gameOver");
+}
   }
 //showQuestion(questions);
   //console.log(showQuestion)
@@ -362,6 +372,7 @@ function selectAnswer(e) {
     }else{
         //take away 10 sec
         console.log("wrong");
+        stopwatch.loseTime();
     }
     setStatusClass(document.body, correct)
     Array.from(answerButtons.children).forEach(button => { // need to go over w tutor

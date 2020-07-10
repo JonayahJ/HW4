@@ -150,12 +150,16 @@ $(document).ready(function(){
 // FUNCTIONS =========================================================================
 
 // countdown timer
-setInterval(updateTimer, 1000)
+// setInterval(updateTimer, 1000)
 
-function updateTimer() {
-    timerEl.innerHTML = secondsLeft;
-    secondsLeft--;
-}
+// function updateTimer() {
+//     timerEl.innerHTML = secondsLeft;
+//     secondsLeft--;
+//     if (secondsLeft === 0) {
+//         clearInterval(timerInterval);
+//         // endGame()
+//       }
+// }
 
 // click start button to start game
 startEl.addEventListener("click", startGame)
@@ -201,11 +205,13 @@ function setNextQuestion (){
 
 // show questions
 function showQuestion(question) {
+    questionEl.innerText ="";
     // adding the question to the question id
-    questionEl.innerText = question.question
-    // for each question, do this
+    questionEl.innerText = question.question;
+    console.log(question.question);
+    // for each question, do this...
     question.answers.forEach(answer => {
-      // create a button
+      // create a button for each answer option
       const button = document.createElement("button")
       // add the possible answers to the inside of the button
       button.innerText = answer.text
@@ -221,8 +227,8 @@ function showQuestion(question) {
       answerButtons.appendChild(button)
     })
   }
-
-  console.log(showQuestion)
+//showQuestion(questions);
+  //console.log(showQuestion)
 
 // removing the old questions
 function resetState() {
@@ -236,6 +242,16 @@ function resetState() {
 function selectAnswer(e) {
     const selectButton = e.target
     const correct = selectButton.dataset.correct
+    console.log(correct);
+    if(correct =="true"){
+        //increase score val
+        score++;
+        console.log(score);
+        document.querySelector("#score").innerHTML=score;
+    }else{
+        //take away 10 sec
+        console.log("wrong");
+    }
     setStatusClass(document.body, correct)
     Array.from(answerButtons.children).forEach(button => { // need to go over w tutor
         setStatusClass(button, button.dataset.correct)
@@ -272,6 +288,14 @@ function clearStatusClass(element) {
 // Display Input ========================================================================
     
 // Game Over!
+    // function endGame() {
+    //     if (questionContainer.style.display === "none") {
+    //         questionContainer.style.display = "block";
+    //        } else {
+    //         questionContainer.style.display = "none"
+    //        }
+    // }
+
     // Save your initials into the score card!
         // function scoreboard(params) {};
 

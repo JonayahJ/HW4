@@ -320,7 +320,7 @@ function setNextQuestion (){
 
 // show questions
 function showQuestion(question) {
-    if(currentQuestionIndex<4){
+    if(currentQuestionIndex<12){
 
   
     questionEl.innerText ="";
@@ -346,6 +346,9 @@ function showQuestion(question) {
     })
 }else{
     alert("gameOver");
+    //stop the time
+    //display results
+
 }
   }
 //showQuestion(questions);

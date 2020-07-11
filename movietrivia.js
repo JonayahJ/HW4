@@ -39,52 +39,40 @@ var stopwatch =
   time: 180,
 
 
-  reset: function() 
-  {
-
+  reset: function() {
     stopwatch.time = 180;
-
-
     // DONE: Change the "display" div to "00:00."
     $("#timer").text("03:00");
-
   },
 
-  start: function() 
-  {
-
+  start: function() {
     // DONE: Use setInterval to start the count here and set the clock to running.
     if (!clockRunning) {
         intervalId = setInterval(stopwatch.count, 1000);
         clockRunning = true;
     }
   },
-  stop: function() 
-  {
-
+  stop: function() {
     // DONE: Use clearInterval to stop the count here and set the clock to not be running.
     clearInterval(intervalId);
     clockRunning = false;
   },
   
-  count: function() 
-  {
-
-    // DONE: increment time by 1, remember we cant use "this" here.
+  count: function() {
+    // DONE: decrement time by 1, remember we cant use "this" here.
     stopwatch.time--;
     //console.log("time: "+stopwatch.time)
 
     // DONE: Get the current time, pass that into the stopwatch.timeConverter function,
     //       and save the result in a variable.
     var converted = stopwatch.timeConverter(stopwatch.time);
-    console.log(converted);
+    // console.log(converted);
 
     // DONE: Use the variable we just created to show the converted time in the "display" div.
     $("#timer").text(converted);
   },
-  loseTime: function() 
-  {
-
+  
+  loseTime: function() {
     // DONE: increment time by 1, remember we cant use "this" here.
     stopwatch.time-=10;
     //console.log("time: "+stopwatch.time)
@@ -97,8 +85,8 @@ var stopwatch =
     // DONE: Use the variable we just created to show the converted time in the "display" div.
     $("#timer").text(converted);
   },
-  timeConverter: function(t) 
-  {
+  
+  timeConverter: function(t) {
     //t=1
     //min0
     //min=00
@@ -120,11 +108,7 @@ var stopwatch =
 
     return minutes + ":" + seconds;
   }
-};
-
-
-    //end of timer
-
+}; //end of timer
 
     // variables
     var score = 0;
@@ -183,9 +167,9 @@ var stopwatch =
         { //6
             question: "In \"Get Out\", what does Chris use to NOT get sent to the sunken place?", 
             answers: [
-                { text: "nylon", correct: false },
-                { text: "cotton", correct: true },
-                { text: "twill", correct: false },
+                { text: "Nylon", correct: false },
+                { text: "Cotton", correct: true },
+                { text: "Twill", correct: false },
             ],
         },
         
@@ -210,9 +194,9 @@ var stopwatch =
         { //9
             question: "How many people died in \"The Babadook\"?", 
             answers: [
-                { text: "none", correct: true },
-                { text: "a few", correct: false },
-                { text: "a lot", correct: false },
+                { text: "None", correct: true },
+                { text: "A few", correct: false },
+                { text: "A lot", correct: false },
             ],
         },
         
@@ -259,18 +243,6 @@ var stopwatch =
     // console.log(questions)
 
 // FUNCTIONS =========================================================================
-
-// countdown timer
-// setInterval(updateTimer, 1000)
-
-// function updateTimer() {
-//     timerEl.innerHTML = secondsLeft;
-//     secondsLeft--;
-//     if (secondsLeft === 0) {
-//         clearInterval(timerInterval);
-//         // endGame()
-//       }
-// }
 // ask them questions
 shuffledQuestions = questions.sort(() => Math.random() - .5);
 currentQuestionIndex = 0
@@ -320,12 +292,12 @@ function setNextQuestion (){
 
 // show questions
 function showQuestion(question) {
-    if(currentQuestionIndex<12){
+    if(currentQuestionIndex < 14){
 
   
     questionEl.innerText ="";
     // adding the question to the question id
-    questionEl.innerText = question.question;
+    questionEl.innerText = question.question;  //there are times when I get an error
     console.log(question.question);
     // for each question, do this...
     question.answers.forEach(answer => {
@@ -344,14 +316,12 @@ function showQuestion(question) {
       button.addEventListener('click', selectAnswer)
       answerButtons.appendChild(button)
     })
-}else{
-    alert("gameOver");
-    //stop the time
-    //display results
-
+}else{ // Game Over alert
+    alert(`Game Over! \n You got ${score} question(s) correct! \n Refresh to play again.`);
+    stopwatch.stop();
+    // display results
 }
   }
-//showQuestion(questions);
   //console.log(showQuestion)
 
 // removing the old questions
@@ -371,7 +341,7 @@ function selectAnswer(e) {
         //increase score val
         score++;
         console.log(score);
-        document.querySelector("#score").innerHTML=score;
+        document.querySelector("#score").innerHTML = score;
     }else{
         //take away 10 sec
         console.log("wrong");
@@ -403,27 +373,4 @@ function clearStatusClass(element) {
     element.classList.remove("incorrect")
 }
 
-
-// when the timer reaches 0, then...
-    // timer is done
-    // clear screen
-
-
-
-// Display Input ========================================================================
-    
-// Game Over!
-    // function endGame() {
-    //     if (questionContainer.style.display === "none") {
-    //         questionContainer.style.display = "block";
-    //        } else {
-    //         questionContainer.style.display = "none"
-    //        }
-    // }
-
-    // Save your initials into the score card!
-        // function scoreboard(params) {};
-
-    // Play again? button
-        // return to top of quiz
 });
